@@ -1,5 +1,10 @@
-import { Stack } from 'expo-router';
+import { Slot, Stack } from 'expo-router';
 import '../global.css';
+import { Text, View } from 'react-native';
 export default function Layaout() {
-  return <Stack />;
+  return (
+    <View className="flex-1 bg.black">
+      <Stack></Stack>
+    </View>
+  );
 }
