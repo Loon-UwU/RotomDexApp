@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { GetPokemonDex } from '../Services/PokeApi/GetPokemonDex';
 import { PokedexListPokemonType } from '../Core/Models/Pokedex/PokedexListPokemonType';
 import { DexPokemonType } from '../Core/Models/Pokedex/DexPokemonType';
+import { GetSprites } from '../Services/PokeApi/GetSprites';
 
 export default function Index() {
   const [Loading, setLoading] = useState(false);
@@ -45,8 +46,7 @@ export default function Index() {
       data={VisiblePokedex}
       keyExtractor={(item) => String(item.pokemon_species.name)}
       renderItem={({ item }) => {
-        // El ID de sprite es el entry_number
-        const spriteUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${item.entry_number}.png`;
+        const spriteUrl = GetSprites(item.pokemon_species.url);
 
         return (
           <View className=" bg-gray-600 ">
@@ -54,7 +54,7 @@ export default function Index() {
               <Text className="text-white">
                 #{item.entry_number} {item.pokemon_species.name}
               </Text>
-              <CustomImage Url={spriteUrl}></CustomImage>
+              <CustomImage Url={spriteUrl.Normal}></CustomImage>
             </View>
           </View>
         );
