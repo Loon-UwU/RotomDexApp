@@ -18,7 +18,7 @@ export function PokedexService(pageSize = 20) {
     /**
      * *Cargado de los datos de la pokedex usando la pokeApi
      */
-    const loadPokedex = async (Id: number = 2) => {
+    const loadPokedex = async (Id: number = 1) => {
         setLoading(true); // *inicia la carga
         setPage(1) // !Reinicia la pagina si se carga una nueva pokedex
         try {
@@ -52,7 +52,7 @@ export function PokedexService(pageSize = 20) {
     };
 
     useEffect(() => {
-        loadPokedex(); // !Ejecuta la carga de los datos
+        loadPokedex(1); // !Ejecuta la carga de los datos
     }, []);
     //Retorna los datos utiles
     return {

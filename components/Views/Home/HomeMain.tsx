@@ -1,0 +1,17 @@
+import { View } from 'react-native';
+import { PokedexService } from '../../../Services/hooks/PokedexServices';
+import { CartList } from './Componentes/CartList';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
+export function HomeMain() {
+  const { visiblePokedex, loadMore, loading } = PokedexService();
+  const insets = useSafeAreaInsets();
+  return (
+    <View
+      style={{ paddingBottom: insets.bottom, paddingTop: insets.top }}
+      className="bg-gray-600"
+    >
+      <CartList data={visiblePokedex} loadMore={loadMore} loading={loading} />
+    </View>
+  );
+}
