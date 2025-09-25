@@ -1,7 +1,8 @@
-import { ActivityIndicator, FlatList } from 'react-native';
+import { ActivityIndicator, FlatList, Pressable } from 'react-native';
 import { CustomFlashListProps } from '../../../../Core/Models/CustomType/CustomFlashListProps';
 import { GetSprites } from '../../../../Services/PokeApi/GetSprites';
 import { CartPokemon } from './CartPokemon';
+import { Link } from 'expo-router';
 
 export function CartList({ data, loadMore, loading }: CustomFlashListProps) {
   return (
@@ -12,11 +13,15 @@ export function CartList({ data, loadMore, loading }: CustomFlashListProps) {
         const spriteUrl = GetSprites(item.pokemon_species.url);
 
         return (
-          <CartPokemon
-            id={item.entry_number}
-            name={item.pokemon_species.name}
-            sprite={spriteUrl.Normal}
-          />
+          <Link asChild href={`/Pokemon/${item.pokemon_species.name}`}>
+            <Pressable>
+              <CartPokemon
+                id={item.entry_number}
+                name={item.pokemon_species.name}
+                sprite={spriteUrl.Normal}
+              />
+            </Pressable>
+          </Link>
         );
       }}
       onEndReached={loadMore}
