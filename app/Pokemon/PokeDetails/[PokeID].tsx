@@ -1,19 +1,18 @@
 import { useLocalSearchParams } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { Text } from 'react-native';
-import { PokemonDataType } from '../../Core/Models/Pokemon/PokemonDataType';
-import { GetPokemonInfo } from '../../Services/PokeApi/GetPokemonInfo';
+import { PokemonDataType } from '../../../Core/Models/Pokemon/PokemonDataType';
+import { GetPokemonInfo } from '../../../Services/PokeApi/GetPokemonInfo';
 
 export default function PokeDetail() {
   const { PokeID } = useLocalSearchParams();
   const [PokemonData, SetPokemonData] = useState<PokemonDataType>();
 
-  const nameParam = typeof PokeID === 'string' ? PokeID : PokeID?.[0];
   useEffect(() => {
-    if (nameParam) {
-      GetPokemonInfo(nameParam).then(SetPokemonData);
+    if (PokeID) {
+      GetPokemonInfo(String(PokeID)).then(SetPokemonData);
     }
-  }, [nameParam]);
+  }, [PokeID]);
 
   return (
     <Text>

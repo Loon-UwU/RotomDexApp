@@ -13,7 +13,10 @@ export function CartList({ data, loadMore, loading }: CustomFlashListProps) {
         const spriteUrl = GetSprites(item.pokemon_species.url);
 
         return (
-          <Link asChild href={`/Pokemon/${item.pokemon_species.name}`}>
+          <Link
+            asChild
+            href={`/Pokemon/PokeDetails/${item.pokemon_species.name}`}
+          >
             <Pressable>
               <CartPokemon
                 id={item.entry_number}
