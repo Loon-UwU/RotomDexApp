@@ -12,3 +12,18 @@ export function GetNacionalDexNumber(Url: string): string {
     }
     return match[1]
 }
+
+/**
+ * *Obtiene el Ide la la pokedex por la url de la poke api
+ * @param Url - URL de la especie del pokemon = ej: "https://pokeapi.co/api/v2/pokedex/2/"
+ * @returns - Id de la pokedex nacinal ej: 2
+ */
+
+export function GetIdPokedexNumber(Url: string): string {
+    const match = Url.match(/\/pokedex\/(\d+)\//); // !Machea la cadena para ontener el numero de la url de
+
+    if (!match) { // !verifica si fue correcto o no
+        throw new Error("URL inválida de Pokémon species");
+    }
+    return match[1]
+}

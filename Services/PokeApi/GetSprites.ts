@@ -2,7 +2,7 @@
 import { PokeApi } from "../../Core/Constant/PokeApi";
 // *Modelos De tipos
 import { SpritesType } from "../../Core/Models/Pokemon/SpritesType";
-import { GetNacionalDexNumber } from "./GetNaticonalDexNumber";
+import { GetNacionalDexNumber } from "./GetIds";
 
 /**
  * * Crea la url de la imagen del sprite de cada pokemon
