@@ -1,7 +1,7 @@
 import { ActivityIndicator, FlatList, Pressable } from 'react-native';
 import { CustomFlashListProps } from '../../../../Core/Models/CustomType/CustomFlashListProps';
 import { GetSprites } from '../../../../Services/PokeApi/GetSprites';
-import { CartPokemon } from './CartPokemon';
+import CartPokemonAnimate, { CartPokemon } from './CartPokemon';
 import { Link } from 'expo-router';
 
 export function CartList({ data, loadMore, loading }: CustomFlashListProps) {
@@ -9,22 +9,16 @@ export function CartList({ data, loadMore, loading }: CustomFlashListProps) {
     <FlatList
       data={data}
       keyExtractor={(item) => String(item.pokemon_species.name)}
-      renderItem={({ item }) => {
+      renderItem={({ item, index }) => {
         const spriteUrl = GetSprites(item.pokemon_species.url);
 
         return (
-          <Link
-            asChild
-            href={`/Pokemon/PokeDetails/${item.pokemon_species.name}`}
-          >
-            <Pressable>
-              <CartPokemon
-                id={item.entry_number}
-                name={item.pokemon_species.name}
-                sprite={spriteUrl.Normal}
-              />
-            </Pressable>
-          </Link>
+          <CartPokemonAnimate
+            id={item.entry_number}
+            name={item.pokemon_species.name}
+            sprite={spriteUrl.Normal}
+            Index={index}
+          />
         );
       }}
       onEndReached={loadMore}
