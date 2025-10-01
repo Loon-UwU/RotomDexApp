@@ -1,0 +1,43 @@
+export enum TypePokemon {
+    steel = 'steel',
+    water = 'water',
+    bug = 'bug',
+    dragon = 'dragon',
+    electric = 'electric',
+    ghost = 'ghost',
+    fire = 'fire',
+    fairy = 'fairy',
+    ice = 'ice',
+    fighting = 'fighting',
+    normal = 'normal',
+    grass = 'grass',
+    psychic = 'psychic',
+    rock = 'rock',
+    dark = 'dark',
+    ground = 'ground',
+    poison = 'poison',
+    flying = 'flying',
+}
+
+
+export const TypePokemonStyle = new Map<string, string>
+    ([
+        [TypePokemon.bug, '#D0F769'],
+        [TypePokemon.dark, '#2C2424'],
+        [TypePokemon.dragon, '#4A27C1'],
+        [TypePokemon.electric, '#F1EA54'],
+        [TypePokemon.fairy, '#D89DF0'],
+        [TypePokemon.fighting, '#F97D0E'],
+        [TypePokemon.fire, '#A4301E'],
+        [TypePokemon.flying, '#A8DFD8'],
+        [TypePokemon.ghost, '#726DAD'],
+        [TypePokemon.grass, '#59A34B'],
+        [TypePokemon.ground, '#A1894D'],
+        [TypePokemon.ice, '#78F9E1'],
+        [TypePokemon.normal, '#DAD4B6'],
+        [TypePokemon.poison, '#5E44AB'],
+        [TypePokemon.psychic, '#B159FF'],
+        [TypePokemon.rock, '#C9B27A'],
+        [TypePokemon.steel, '#A6A6A6'],
+        [TypePokemon.water, '#2E7CC6'],
+    ]);

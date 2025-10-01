@@ -1,5 +1,6 @@
-export type PokemonDataType = {
-    name: string,
+import { BasePokeApiModel } from "../../Constant/BasePokeApiModel"
+
+export interface PokemonDataType extends BasePokeApiModel {
     id: number
     sprites: {
         front_default: string
@@ -7,7 +8,7 @@ export type PokemonDataType = {
     }
     types: [{
         Slot: number
-        type: { name: string }
+        type: BasePokeApiModel
 
     }]
 }

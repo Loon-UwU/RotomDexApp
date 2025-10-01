@@ -4,11 +4,13 @@ import { FlatList, Pressable, Text, View } from 'react-native';
 import { PokemonDataType } from '../../../Core/Models/Pokemon/PokemonDataType';
 import { GetPokemonInfo } from '../../../Services/PokeApi/GetPokemonInfo';
 import { CustomImage } from '../../../components/common/CustomImage';
+import { TypePokemonStyle } from '../../../Core/enums/PokemonTypeColor';
 
 export default function PokeDetail() {
   const { PokeID } = useLocalSearchParams();
   const [PokemonData, SetPokemonData] = useState<PokemonDataType>();
   const [spriteVisible, setSpriteVisible] = useState<string | undefined>();
+  const TypeStile = TypePokemonStyle;
   useEffect(() => {
     if (PokeID) {
       GetPokemonInfo(String(PokeID)).then((data) => {
@@ -44,7 +46,10 @@ export default function PokeDetail() {
             keyExtractor={(item) => String(item.Slot ?? Math.random())}
             renderItem={({ item }) => {
               return (
-                <View className="bg-orange-800  m-1 p-2 rounded w-28 flex items-center">
+                <View
+                  className="bg-orange-800  m-1 p-2 rounded w-28 flex items-center"
+                  style={{ backgroundColor: TypeStile.get(item.type.name) }}
+                >
                   <Text className="text-white ">
                     {item.type.name.toLocaleUpperCase()}
                   </Text>
