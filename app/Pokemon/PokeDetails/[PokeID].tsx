@@ -37,8 +37,8 @@ export default function PokeDetail() {
           <CustomImage Url={spriteVisible} width={200} height={200} />
         </View>
       </Pressable>
-      <View testID="Types">
-        <View testID="Imagenes" className="flex-row">
+      <View testID="TypesContenedor">
+        <View testID="Type" className="flex-row">
           <FlatList
             data={PokemonData?.types ?? []}
             numColumns={2}
@@ -53,6 +53,24 @@ export default function PokeDetail() {
                   <Text className="text-white ">
                     {item.type.name.toLocaleUpperCase()}
                   </Text>
+                </View>
+              );
+            }}
+          ></FlatList>
+        </View>
+      </View>
+      <View testID="Statscontenedor">
+        <View testID="Stats" className="items-center">
+          <FlatList
+            data={PokemonData?.stats ?? []}
+            numColumns={6}
+            columnWrapperStyle={{ justifyContent: 'center' }}
+            keyExtractor={(item) => item.stat.name}
+            renderItem={({ item }) => {
+              return (
+                <View className="m-0.1 items-center w-15 border border-gray-300 rounded mr-1">
+                  <Text className="border-b-2">{item.stat.name}</Text>
+                  <Text>{item.base_stat}</Text>
                 </View>
               );
             }}

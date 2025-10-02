@@ -11,4 +11,10 @@ export interface PokemonDataType extends BasePokeApiModel {
         type: BasePokeApiModel
 
     }]
+    stats: [
+        {
+            base_stat: number
+            stat: BasePokeApiModel
+        }
+    ]
 }
