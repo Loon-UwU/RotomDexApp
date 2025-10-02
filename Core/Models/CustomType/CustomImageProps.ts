@@ -1,6 +1,6 @@
 export type CustomImageProps =
     {
-        Url: string;
+        Url?: string;
         width?: number;
         height?: number;
     };

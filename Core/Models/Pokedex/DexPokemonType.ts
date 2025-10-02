@@ -1,9 +1,9 @@
 // * Modelo de la especies para la lista de pokedex
+
+import { BasePokeApiModel } from "../../Constant/BasePokeApiModel";
+
 // ! es solo para la lista de pokemon de cada pokedex
-export type DexPokemonType = {
+export interface DexPokemonType {
     entry_number: number; //!Numero dentro de la pokedex
-    pokemon_species: {
-        name: string; //!Nombre del pokemon
-        url: string; //!Url de la especie
-    };
+    pokemon_species: BasePokeApiModel; //! Nombre y url de la especie
 };
