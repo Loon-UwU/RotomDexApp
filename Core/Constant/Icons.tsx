@@ -9,3 +9,10 @@ export const TeamIcon = (props) => (
 export const ConfigIcon = (props) => (
   <Octicons name="tools" size={24} color="white" {...props} />
 );
+export const WeightIcon = (props) => (
+  <Octicons name="arrow-down" size={20} color="white" {...props} />
+);
+
+export const HeightIcon = (props) => (
+  <Octicons name="arrow-up" size={20} color="white" {...props} />
+);

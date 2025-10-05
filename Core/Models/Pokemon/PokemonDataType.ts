@@ -2,6 +2,8 @@ import { BasePokeApiModel } from "../../Constant/BasePokeApiModel"
 
 export interface PokemonDataType extends BasePokeApiModel {
     id: number
+    weight: number
+    height: number
     sprites: {
         front_default: string
         front_shiny: string
