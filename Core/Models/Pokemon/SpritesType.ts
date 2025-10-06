@@ -1,5 +1,5 @@
 // *Modelo de sprites 
-export type SpritesType = {
+export interface SpritesType {
     Normal: string // !Forma normal
     Shiny: string // !Forma Shiny
 }

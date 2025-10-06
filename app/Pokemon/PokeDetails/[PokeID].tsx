@@ -6,17 +6,33 @@ import { GetPokemonInfo } from '../../../Services/PokeApi/GetPokemonInfo';
 import { CustomImage } from '../../../components/common/CustomImage';
 import { TypePokemonStyle } from '../../../Core/enums/PokemonTypeColor';
 import { HeightIcon, WeightIcon } from '../../../Core/Constant/Icons';
+import { GetPokemonSpecie } from '../../../Services/PokeApi/GetPokemonSpecies';
+import { PokemonSpeciesType } from '../../../Core/Models/Pokemon/PokemonSpecies';
 
 export default function PokeDetail() {
   const { PokeID } = useLocalSearchParams();
   const [PokemonData, SetPokemonData] = useState<PokemonDataType>();
   const [spriteVisible, setSpriteVisible] = useState<string | undefined>();
+  const [Species, setSpecies] = useState<PokemonSpeciesType>();
   const TypeStile = TypePokemonStyle;
   useEffect(() => {
     if (PokeID) {
       GetPokemonInfo(String(PokeID)).then((data) => {
         SetPokemonData(data);
         setSpriteVisible(data.sprites.front_default); // Inicializa el sprite
+      });
+      GetPokemonSpecie(String(PokeID)).then((data) => {
+        const flavor = data.flavor_text_entries.find(
+          (item) => item.language.name === 'es',
+        );
+        const genius = data.genera.find((item) => item.language.name === 'es');
+        setSpecies({
+          ...data,
+          flavor_text: flavor
+            ? flavor.flavor_text
+            : 'Sin descripción disponible.',
+          geniusText: genius?.genus ? genius.genus : 'Sin tipo de asignado.',
+        });
       });
     }
   }, [PokeID]);
@@ -43,7 +59,7 @@ export default function PokeDetail() {
       </Pressable>
       <View
         testID="DataContenedor"
-        className=" bg-white h-full rounded-t-3xl mx-1 "
+        className=" bg-white h-full rounded-t-3xl mx-1"
       >
         <View testID="TypesContenedor" className="mt-5">
           <View testID="Type" className="flex-row">
@@ -55,7 +71,7 @@ export default function PokeDetail() {
               renderItem={({ item }) => {
                 return (
                   <View
-                    className="bg-orange-800  m-1 p-2 rounded w-28 flex items-center"
+                    className=" m-1 p-2 rounded w-28 flex items-center"
                     style={{ backgroundColor: TypeStile.get(item.type.name) }}
                   >
                     <Text className="text-white ">
@@ -66,26 +82,36 @@ export default function PokeDetail() {
               }}
             ></FlatList>
           </View>
-          <View
-            testID="WAHConteiner"
-            className="flex-row items-center justify-center mt-5"
-          >
-            <View testID="Weight" className="w-1/2 items-center">
-              <View className="flex-row">
-                <WeightIcon color="black"></WeightIcon>
-                <Text className="text-gray-400">Weight</Text>
-              </View>
-
-              <Text className="font-bold text-2xl">{PokemonData?.weight}</Text>
+        </View>
+        <View
+          testID="WAHConteiner"
+          className="flex-row items-center justify-center mt-5"
+        >
+          <View testID="Weight" className="w-1/2 items-center">
+            <View className="flex-row">
+              <WeightIcon color="black"></WeightIcon>
+              <Text className="text-gray-400">Weight</Text>
             </View>
-            <View testID="Height" className="w-1/2 items-center">
-              <View className="flex-row">
-                <HeightIcon color="black"></HeightIcon>
-                <Text className="text-gray-400">Height</Text>
-              </View>
 
-              <Text className="font-bold text-2xl">{PokemonData?.height}</Text>
+            <Text className="font-bold text-2xl">{PokemonData?.weight}</Text>
+          </View>
+          <View testID="Height" className="w-1/2 items-center">
+            <View className="flex-row">
+              <HeightIcon color="black"></HeightIcon>
+              <Text className="text-gray-400">Height</Text>
             </View>
+
+            <Text className="font-bold text-2xl">{PokemonData?.height}</Text>
+          </View>
+        </View>
+        <View testID="Flavorconteiner" className="mt-5">
+          <View testID="Flavor" className="items-center">
+            <Text className="font-bold text-xl pb-3">
+              {Species?.geniusText}
+            </Text>
+            <Text className="text-gray-400 text-justify">
+              {Species?.flavor_text}
+            </Text>
           </View>
         </View>
         <View testID="Statscontenedor">
