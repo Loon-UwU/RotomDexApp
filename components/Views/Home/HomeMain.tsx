@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 import { PokedexService } from '../../../Services/hooks/PokedexServices';
-import { CartList } from './Componentes/CartList';
+import { CartList } from './HomeComponentes/CartList';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export function HomeMain() {
