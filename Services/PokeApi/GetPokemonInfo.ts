@@ -11,5 +11,6 @@ export async function GetPokemonInfo(name: string): Promise<PokemonDataType> {
     if (!response.ok) { // !verifica si la peticion fallo
         throw new Error('No se pudo obeterner la lista de pokemon')
     }
-    return response.json(); // !retorna la pokedex con la lista
+    const data = await response.json();
+    return data as PokemonDataType; // !retorna la pokedex con la lista
 }

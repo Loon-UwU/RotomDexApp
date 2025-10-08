@@ -3,10 +3,10 @@ import '../global.css';
 import { View } from 'react-native';
 export default function Layaout() {
   return (
-    <View className="flex-1 bg-gray-600">
+    <View className="flex-1">
       <Stack
         screenOptions={{
-          headerStyle: { backgroundColor: 'transparent' },
+          headerStyle: { backgroundColor: '#fff' },
           headerTintColor: 'red',
           headerTitle: 'Rotom Dex',
           headerShadowVisible: false,

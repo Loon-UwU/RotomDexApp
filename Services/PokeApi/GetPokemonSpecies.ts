@@ -11,5 +11,6 @@ export async function GetPokemonSpecie(name: string): Promise<PokemonSpeciesType
     if (!response.ok) { // !verifica si la peticion fallo
         throw new Error('No se pudo obeterner la lista de pokemon')
     }
-    return response.json(); // !retorna la pokedex con la lista
+    const Data = await response.json()
+    return Data as PokemonSpeciesType; // !retorna la pokedex con la lista
 }

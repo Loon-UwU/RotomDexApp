@@ -2,19 +2,21 @@ import { Animated, Pressable, Text, View } from 'react-native';
 import { CustomImage } from '../../../common/CustomImage';
 import { CustomCartpokemonProps } from '../../../../Core/Models/CustomType/CustomCartpokemonProps';
 import { Link } from 'expo-router';
-import { use, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { getCycledIdnex } from '../../../../Services/hooks/getCycledIdnex';
 
 export function CartPokemon({ id, name, sprite }: CustomCartpokemonProps) {
   return (
     <Link asChild href={`/Pokemon/PokeDetails/${name}`}>
       <Pressable>
-        <View>
-          <View className="m-2 border-solid border-4 py-0 px-5 flex-row justify-between items-center rounded-md border-gray-800 bg-cyan-900">
-            <Text className="text-white">
-              #{id}-{name}
-            </Text>
+        <View className="border rounded-md mb-2 mx-2">
+          <View className=" m-2 py-0 px-5 flex-row justify-between items-center border-white rounded-md ">
             <CustomImage Url={sprite}></CustomImage>
+            <View className=" w-full items-center">
+              <Text className="text-black">
+                #{id}-{name}
+              </Text>
+            </View>
           </View>
         </View>
       </Pressable>

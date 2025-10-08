@@ -3,7 +3,7 @@ import { DetailsMain } from '../../../components/Views/Home/DetailsMain';
 import { View, Text } from 'react-native';
 
 export default function PokeDetail() {
-  const { PokeID } = useLocalSearchParams();
+  const { PokeID } = useLocalSearchParams<{ PokeID: string }>();
 
-  return <DetailsMain PokeID={String(PokeID)}></DetailsMain>;
+  return <DetailsMain PokeID={PokeID}></DetailsMain>;
 }
