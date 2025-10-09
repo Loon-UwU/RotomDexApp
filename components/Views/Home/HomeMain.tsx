@@ -9,7 +9,7 @@ export function HomeMain() {
   return (
     <View
       style={{ paddingBottom: insets.bottom, paddingTop: insets.top }}
-      className=""
+      className=" bg-white dark:bg-fondo-base"
     >
       <CartList data={visiblePokedex} loadMore={loadMore} loading={loading} />
     </View>

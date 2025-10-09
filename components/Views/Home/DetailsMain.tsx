@@ -53,7 +53,7 @@ export function DetailsMain({ PokeID }: DetailMainType) {
       />
       <View
         testID="DataContenedor"
-        className=" bg-white h-full rounded-t-3xl mx-1"
+        className=" bg-white dark:bg-fondo-secundario h-full rounded-t-3xl mx-1"
       >
         <TypeConteiner data={PokemonData?.types} />
         <Flavorconteiner
