@@ -3,7 +3,7 @@ import { StatsConteinerType } from '../../../../Core/Models/CustomType/Statscont
 
 export function Statsconteiner({ stats }: StatsConteinerType) {
   return (
-    <View testID="Statscontenedor">
+    <View testID="Statscontenedor" className="h-48">
       <View testID="Stats" className="mt-5 items-center">
         <Text className="font-bold text-2xl">Stats Base</Text>
         <FlatList

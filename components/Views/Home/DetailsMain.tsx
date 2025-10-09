@@ -61,6 +61,12 @@ export function DetailsMain({ PokeID }: DetailMainType) {
           geniusText={Species?.geniusText}
         />
         <Statsconteiner stats={PokemonData?.stats} />
+
+        <View testID="AbilityConteriner">
+          <View className="items-center">
+            <Text className="font-bold text-2xl">Abilities</Text>
+          </View>
+        </View>
       </View>
     </View>
   );

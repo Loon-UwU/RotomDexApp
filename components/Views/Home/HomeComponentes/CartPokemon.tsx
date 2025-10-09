@@ -9,7 +9,7 @@ export function CartPokemon({ id, name, sprite }: CustomCartpokemonProps) {
   return (
     <Link asChild href={`/Pokemon/PokeDetails/${name}`}>
       <Pressable>
-        <View className="border rounded-md mb-2 mx-2">
+        <View className=" rounded-md mb-2 mx-2">
           <View className=" m-2 py-0 px-5 flex-row justify-between items-center border-white rounded-md ">
             <CustomImage Url={sprite}></CustomImage>
             <View className=" w-full items-center">
