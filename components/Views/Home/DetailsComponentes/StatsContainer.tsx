@@ -10,6 +10,7 @@ export function Statsconteiner({ stats }: StatsConteinerType) {
         </Text>
         <FlatList
           data={stats ?? []}
+          scrollEnabled={false}
           numColumns={3}
           columnWrapperStyle={{ justifyContent: 'center' }}
           keyExtractor={(item) => item.stat.name}

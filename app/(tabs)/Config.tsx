@@ -1,4 +1,4 @@
-import { Pressable, Switch, Text, View } from 'react-native';
+import { Switch, Text, View } from 'react-native';
 import { useColorScheme } from 'nativewind';
 import { useState } from 'react';
 
@@ -12,14 +12,19 @@ export default function Config() {
           Apariencia
         </Text>
       </View>
-      <View className="flex-1">
-        <View className="">
+      <View className="flex-row justify-between bg-slate-100 dark:bg-fondo-secundario p-4 rounded-md">
+        <View className="items-start justify-between w-auto">
           <Text className="text-black dark:text-texto-principal font-bold text-xl">
             Modo Oscuro
           </Text>
+          <Text className="text-texto-apagado">
+            Activa el modo oscuro de la aplicacion
+          </Text>
+        </View>
 
+        <View className="w-4 items-center justify-center h-auto mr-3">
           <Switch
-            className="bg-white"
+            className="w-auto"
             value={enabled}
             onValueChange={(enabled) => {
               setColorScheme(colorScheme === 'dark' ? 'light' : 'dark');
