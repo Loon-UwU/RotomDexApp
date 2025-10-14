@@ -3,6 +3,7 @@ import { CustomFlashListProps } from '../../../../Core/Models/CustomType/CustomF
 import { GetSprites } from '../../../../Services/PokeApi/GetSprites';
 import CartPokemonAnimate, { CartPokemon } from './CartPokemon';
 import { View } from 'react-native';
+import LottieView from 'lottie-react-native';
 
 export function CartList({ data, loadMore, loading }: CustomFlashListProps) {
   return (
@@ -27,11 +28,12 @@ export function CartList({ data, loadMore, loading }: CustomFlashListProps) {
       onEndReachedThreshold={0.5}
       ListFooterComponent={
         loading ? (
-          <ActivityIndicator
-            size="large"
-            color="white"
-            style={{ marginVertical: 10 }}
-          />
+          <LottieView
+            source={require('../../../../assets/PokeballLoad.json')}
+            autoPlay
+            loop
+            style={{ width: 200, height: 200 }}
+          ></LottieView>
         ) : null
       }
     />

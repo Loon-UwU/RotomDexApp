@@ -12,13 +12,16 @@ import { Flavorconteiner } from './DetailsComponentes/Flavorcontainer';
 import { Statsconteiner } from './DetailsComponentes/StatsContainer';
 import { DetailMainType } from '../../../Core/Models/CustomType/DetailmainType';
 import { NameConteiner } from './DetailsComponentes/NameConteiner';
+import LottieView from 'lottie-react-native';
 
 export function DetailsMain({ PokeID }: DetailMainType) {
   const [PokemonData, SetPokemonData] = useState<PokemonDataType>();
   const [Species, setSpecies] = useState<PokemonSpeciesType>();
+  const [Load, setLoad] = useState(false);
   const TypeStile = TypePokemonStyle;
   useEffect(() => {
     if (PokeID) {
+      setLoad(true);
       GetPokemonInfo(String(PokeID)).then((data) => {
         SetPokemonData(data); // Inicializa el sprite
       });
@@ -35,8 +38,20 @@ export function DetailsMain({ PokeID }: DetailMainType) {
           geniusText: genius?.genus ? genius.genus : 'Sin tipo de asignado.',
         });
       });
+      setLoad(false);
     }
   }, [PokeID]);
+
+  if (Load) {
+    <View className="flex h-full items-center justify-center">
+      <LottieView
+        source={require('../../../assets/PokeballLoad.json')}
+        autoPlay
+        loop
+        style={{ width: 50, height: 50 }}
+      ></LottieView>
+    </View>;
+  }
 
   return (
     <View
